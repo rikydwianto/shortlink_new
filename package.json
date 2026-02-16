@@ -1,0 +1,25 @@
+{
+  "name": "shortlink",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:dashboard\"",
+    "dev:api": "npm run dev -w @shortlink/api",
+    "dev:dashboard": "npm run dev -w @shortlink/dashboard",
+    "prod": "concurrently \"npm run prod:api\" \"npm run prod:dashboard\"",
+    "prod:api": "npm run start -w @shortlink/api",
+    "prod:dashboard": "npm run start -w @shortlink/dashboard",
+    "build": "npm run build -w @shortlink/api && npm run build -w @shortlink/dashboard",
+    "lint": "npm run lint -w @shortlink/api && npm run lint -w @shortlink/dashboard",
+    "db:generate": "npm run db:generate -w @shortlink/api",
+    "db:migrate": "npm run db:migrate -w @shortlink/api",
+    "db:seed": "npm run db:seed -w @shortlink/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
+
