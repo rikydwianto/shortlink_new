@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{MESSAGE}}" />
+
+  <!-- Open Graph (WhatsApp, Facebook, Telegram, dll) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{TITLE}}" />
+  <meta property="og:description" content="{{MESSAGE}}" />
+  <meta property="og:url" content="{{CURRENT_URL}}" />
+  <meta property="og:site_name" content="{{SITE_NAME}}" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{{TITLE}}" />
+  <meta name="twitter:description" content="{{MESSAGE}}" />
+  {{PASSWORD_HEAD}}
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#f8fafc;
+      --card:#fff;
+      --border:#e2e8f0;
+      --text:#1e293b;
+      --muted:#64748b;
+      --accent:#3b82f6;
+      --accent-dark:#2563eb;
+      --red:#ef4444;
+      --red-light:#fef2f2;
+      --radius:16px;
+    }
+    body{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      padding:20px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrapper{width:min(460px,100%)}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:32px;
+      box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03);
+    }
+    .icon-wrap{
+      width:48px;height:48px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      margin-bottom:20px;
+    }
+    .icon-wrap.error{background:var(--red-light)}
+    .icon-wrap.error svg{color:var(--red)}
+    .icon-wrap.lock{background:#eff6ff}
+    .icon-wrap.lock svg{color:var(--accent)}
+    .icon-wrap svg{width:24px;height:24px}
+    .badge{
+      display:inline-flex;align-items:center;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:.75rem;font-weight:600;
+      letter-spacing:.03em;
+      margin-bottom:16px;
+    }
+    .badge-red{background:var(--red-light);color:var(--red)}
+    .badge-blue{background:#eff6ff;color:var(--accent)}
+    h1{font-size:1.25rem;font-weight:700;margin-bottom:6px}
+    .sub{font-size:.875rem;color:var(--muted);line-height:1.5;margin-bottom:6px}
+    .hint{font-size:.8125rem;color:var(--muted);line-height:1.5;margin-bottom:20px}
+    .info-box{
+      background:#f8fafc;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:12px 14px;
+      margin-bottom:12px;
+      font-size:.8125rem;
+      color:var(--muted);
+      word-break:break-all;
+      display:flex;gap:8px;align-items:baseline;
+    }
+    .info-box .label{
+      font-weight:600;color:var(--text);
+      white-space:nowrap;flex-shrink:0;
+    }
+    .divider{
+      border:none;
+      border-top:1px solid var(--border);
+      margin:20px 0;
+    }
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 20px;
+      border-radius:10px;border:1px solid transparent;
+      font-size:.875rem;font-weight:600;
+      text-decoration:none;cursor:pointer;
+      transition:all .15s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .btn-primary:hover{background:var(--accent-dark)}
+    .btn-ghost{color:var(--muted);border-color:var(--border);background:var(--card)}
+    .btn-ghost:hover{background:#f8fafc;color:var(--text)}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="icon-wrap {{ICON_CLASS}}">
+        {{ICON_SVG}}
+      </div>
+      <span class="badge {{BADGE_CLASS}}">{{STATUS_LABEL}}</span>
+      <h1>{{TITLE}}</h1>
+      <p class="sub">{{MESSAGE}}</p>
+      <p class="hint">{{HINT}}</p>
+
+      {{#CODE}}
+      <div class="info-box">
+        <span class="label">Code</span>
+        <span>{{CODE}}</span>
+      </div>
+      {{/CODE}}
+
+      <hr class="divider" />
+
+      <div class="actions">
+        {{ACTION_BUTTONS}}
+        <a class="btn btn-ghost" href="javascript:history.back()">Kembali</a>
+      </div>
+    </div>
+  </div>
+  {{PASSWORD_SCRIPT}}
+</body>
+</html>
